@@ -1,2 +1,4 @@
-# AI-Based-Student-Performance-Prediction
-Ai chatbot for student internship project using python and flask
+# MY-Ai-chatbot--Project
+AI chatbot for student intership project using Python and flask
+<br>
+By Sanjana A Tamore
