@@ -91,4 +91,33 @@ Contains deployment-related files and documentation.
 
 Shrushti Rukari
 sanjana tamore
++--------+
+|  User  |
++--------+
+     |
+     v
++-------------+
+|  Frontend   |
++-------------+
+     |
+ POST /api/chat
+     |
+     v
++-------------+
+| Backend API |
++-------------+
+     |
+ AI Request
+     |
+     v
++-----------+
+| AI Model  |
++-----------+
+     |
+ AI Response
+     |
+     v
++-------------+
+| Frontend UI |
++-------------+
 
