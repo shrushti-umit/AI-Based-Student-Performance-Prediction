@@ -1,0 +1,54 @@
+# AI-Based Student Performance Prediction Architecture
+
+## Objective
+This project predicts the academic performance of students using Machine Learning.
+
+### Components
+
+### 1. Client Layer
+The client is the user interface where users upload student data and request predictions.
+
+Examples:
+- Web Browser
+- HTML
+- CSS
+- JavaScript
+
+---
+
+### 2. Server Layer
+
+The server receives user requests, processes them, communicates with the AI model, and sends prediction results.
+
+Technology:
+- Python
+- Flask
+
+---
+
+### 3. AI Model Layer
+
+The AI model is trained using student performance data.
+
+Responsibilities:
+- Data preprocessing
+- Model prediction
+- Return predicted grade/performance
+
+Possible Algorithms:
+- Random Forest
+- Decision Tree
+- Linear Regression
+
+---
+
+### 4. Database / Data Layer
+
+Stores student datasets used for training and testing.
+
+Storage:
+- CSV Files
+
+Files:
+- student_performance_updated_1000.csv
+- student_performance_cleaned.csv
