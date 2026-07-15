@@ -1,36 +1,20 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
-# Home route
-@app.route("/")
-def home():
-    return "AI-Based Student Performance Prediction Backend is Running!"
+@app.route("/api/chat", methods=["POST"])
+def chat():
 
-# Health check
-@app.route("/health", methods=["GET"])
-def health():
-    return jsonify({
-        "status": "Server is running"
-    })
-
-# Predict endpoint
-@app.route("/predict", methods=["POST"])
-def predict():
     data = request.get_json()
 
-    attendance = data.get("attendance")
-    study_hours = data.get("study_hours")
-    previous_grade = data.get("previous_grade")
-
-    prediction = previous_grade + 5
+    prompt = data.get("prompt")
 
     return jsonify({
-        "attendance": attendance,
-        "study_hours": study_hours,
-        "previous_grade": previous_grade,
-        "predicted_grade": prediction
+        "response": f"You entered: {prompt}"
     })
 
 if __name__ == "__main__":
     app.run(debug=True)
+   
