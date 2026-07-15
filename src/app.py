@@ -1,27 +1,8 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
-
-app = Flask(__name__)
-CORS(app)
-
-@app.route("/api/chat", methods=["POST"])
-def chat():
-
-    data = request.get_json()
-
-    prompt = data.get("prompt")
-
-    return jsonify({
-        "response": f"You entered: {prompt}"
-    })
-
-if __name__ == "__main__":
-    app.run(debug=True)
-    from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
-
 app = Flask(__name__)
+chat_history = []
 
 model = joblib.load("model.pkl")
 
@@ -36,6 +17,10 @@ def predict():
         input_data = pd.DataFrame([data])
 
         prediction = model.predict(input_data)
+        chat_history.append({
+    "input": data,
+    "prediction": float(prediction[0])
+})
 
         return jsonify({
             "prediction": prediction[0]
@@ -45,6 +30,9 @@ def predict():
         return jsonify({
             "error": str(e)
         }), 500
+        @app.route("/history", methods=["GET"])
+def history():
+    return jsonify(chat_history)
 
 if __name__ == "__main__":
     app.run(debug=True)
