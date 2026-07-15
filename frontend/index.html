@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Based Student Performance Prediction</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Student Performance Prediction</title>
 </head>
 <body>
 
-<div class="container">
-    <h1>AI-Based Student Performance Prediction</h1>
+<h2>AI Student Performance Prediction</h2>
 
-    <label>Attendance (%)</label>
-    <input type="number" id="attendance">
-
-    <label>Study Hours</label>
-    <input type="number" id="study_hours">
-
-    <label>Previous Grade</label>
-    <input type="number" id="previous_grade">
-
-    <button onclick="predictGrade()">Predict</button>
-
-    <h2 id="result"></h2>
-</div>
-
-<script src="script.js"></script>
-    <input id="prompt" placeholder="Ask anything">
-
-<button onclick="sendMessage()">
-Send
-</button>
+<input type="text" id="prompt" placeholder="Enter your question">
+<button onclick="sendPrompt()">Submit</button>
 
 <p id="response"></p>
 
+<script>
+async function sendPrompt() {
+
+    const userInput = document.getElementById("prompt").value;
+
+    const response = await fetch("http://127.0.0.1:5000/api/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            prompt: userInput
+        })
+    });
+
+    const data = await response.json();
+
+    document.getElementById("response").innerText = data.response;
+}
+</script>
+
 </body>
 </html>
+
